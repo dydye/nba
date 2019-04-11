@@ -29,6 +29,10 @@
     <slf4j.version>1.7.25</slf4j.version>
     <log4j.version>1.2.17</log4j.version>
 
+    <!-- redis 版本 -->
+    <redis.version>2.9.0</redis.version>
+    <spring.redis.version>1.6.2.RELEASE</spring.redis.version>
+
   </properties>
 
   <dependencies>
@@ -103,7 +107,7 @@
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis-spring</artifactId>
-      <version>1.2.2</version>
+      <version>1.2.3</version>
     </dependency>
 
     <!-- 导入java ee jar 包 -->
@@ -124,6 +128,12 @@
       <groupId>commons-dbcp</groupId>
       <artifactId>commons-dbcp</artifactId>
       <version>1.2.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.0.15</version>
     </dependency>
 
     <!-- JSTL标签类 -->
@@ -185,6 +195,39 @@
     </dependency>
 
 
+    <!--redis集成-->
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>${redis.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-redis</artifactId>
+      <version>${spring.redis.version}</version>
+    </dependency>
+
+    <!--java.lang.NoClasjava.lang.NoClassDefFoundError:
+     com/fasterxml/jackson/core/JsonProcessingException异常解决方案,
+     增加如下三种依赖 start-->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.7.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.7.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.7.4</version>
+    </dependency>
+    <!--end-->
+
+
   </dependencies>
 
   <build>
@@ -231,6 +274,7 @@
       <resource>
         <directory>src/main/java</directory>
         <includes>
+          <include>**/*.properties</include>
           <include>**/*.xml</include>
         </includes>
         <filtering>true</filtering>
