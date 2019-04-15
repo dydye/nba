@@ -10,12 +10,12 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class NamedThreadFactory implements ThreadFactory {
 
-	private static final AtomicInteger poolNum = new AtomicInteger(1);
+	private static final AtomicInteger POOlNUM = new AtomicInteger(1);
 	private final AtomicInteger threadNum = new AtomicInteger(1);
 	private final String namePrefix;
 
 	public NamedThreadFactory(String name) {
-		this.namePrefix = name + "-pool-" +poolNum.getAndIncrement() + "-thread-";
+		this.namePrefix = name + "-pool-" +POOlNUM.getAndIncrement() + "-thread-";
 	}
 
 	@Override
